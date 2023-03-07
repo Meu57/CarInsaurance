@@ -1,0 +1,253 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "Policy.Costumer",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_1852268635 { 
+   	label=MainScreen
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   MainScreen1852268635[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)MainScreen</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   G1: ButtonGroup [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   G2: ButtonGroup [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   allRiskChkBX: JCheckBox [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   assistanceChkBX: JCheckBox [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   ceilingRisksList: List&lt;Float&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   claimStatusLBL2: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   claimingCostumerNameLBL: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   claimingCostumerRisksCoveredAREA: JTextArea [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   claimingCostumerValidateDateLBL: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   claimingCoustumerField: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   claimingTXT1: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   claimingTXT2: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   cond1: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   cond2: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   cond3: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   coverageRisksList: List&lt;Float&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   coveredRisksList: List&lt;String&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   currentDate: Date [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   customerMap: Map&lt;Integer, Costumer&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   customerTXT: JTextArea [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   damageradioButton1: JRadioButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   damageradioButton2: JRadioButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   damageradioButton3: JRadioButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   damageradioButton4: JRadioButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   df: SimpleDateFormat [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   driverDamageChkBX: JCheckBox [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   estimated: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   manufacturer: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   model: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   myColor: Color [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   myFont: Font [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   obligatoryChkBX: JCheckBox [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   plateNb: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   policyTXT: JTextArea [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   premiumRisksList: List&lt;Float&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   risksTXT: JTextArea [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   searchTXT: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   settelmentArea: JTextArea [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   settelmentArea2: JTextArea [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   subCity: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   subFname: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   subLname: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   subPhone: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   todayLBL: JLabel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   totalCeiling: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   totalCoverage: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   totalPremium: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   validityYear: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   vehicleDamageChkBX: JCheckBox [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   yearRadio: JRadioButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   yearRadio2: JRadioButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   yearRadio3: JRadioButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   yearRadio4: JRadioButton [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- CheckPolicyValidity(validityOfPolicy: LocalDate): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >- ClaimsIsValid(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >- ClaimsSearchCustomerByMobileNumber(): Costumer</TD></TR>
+<TR><TD ALIGN="LEFT" >- CustomizePanel1()</TD></TR>
+<TR><TD ALIGN="LEFT" >- CustomizePanel2()</TD></TR>
+<TR><TD ALIGN="LEFT" >- CustomizePanel3()</TD></TR>
+<TR><TD ALIGN="LEFT" >- CustomizePanel4()</TD></TR>
+<TR><TD ALIGN="LEFT" >- CustomizePanel5()</TD></TR>
+<TR><TD ALIGN="LEFT" >- CustomizePanel6()</TD></TR>
+<TR><TD ALIGN="LEFT" >- CustomizePanel7()</TD></TR>
+<TR><TD ALIGN="LEFT" >- Customizepanel10()</TD></TR>
+<TR><TD ALIGN="LEFT" >- Customizepanel11()</TD></TR>
+<TR><TD ALIGN="LEFT" >- Customizepanel12()</TD></TR>
+<TR><TD ALIGN="LEFT" >- Customizepanel8()</TD></TR>
+<TR><TD ALIGN="LEFT" >- Customizepanel9()</TD></TR>
+<TR><TD ALIGN="LEFT" >- DisplayPaymentsOfPolicy()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ GetCustomerData(): Costumer</TD></TR>
+<TR><TD ALIGN="LEFT" >+ GetDamageState(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >- GetPolicyData(): Policy</TD></TR>
+<TR><TD ALIGN="LEFT" >- GetRisksCoveredByPlan()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ GetVehicleData(): Vehicle</TD></TR>
+<TR><TD ALIGN="LEFT" >- NewCustomer()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ SaveCustomerMapToDisk()</TD></TR>
+<TR><TD ALIGN="LEFT" >- SaveCustomerMapToNewFile(platenumber: int, file: File)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ SaveCustomerMapTools()</TD></TR>
+<TR><TD ALIGN="LEFT" >- SearchCustomerByMobileNumber()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ main(args: String[])</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_1898802862 { 
+   	label=Policy
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Costumer1898802862[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Costumer</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   city: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   firstName: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lastName: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   phoneNumber: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   policy: Policy [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addToDB()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Policy1898802862[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Policy</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   CoverageLIST: List&lt;Float&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   ceilingLIST: List&lt;Float&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   policyDate: LocalDate [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   premiumLIST: List&lt;Float&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   riskcoveredLIST: List&lt;String&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   validityYear: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   vehicle: Vehicle [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Vehicle1898802862[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Vehicle</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   carDamage: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   estimateValue: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   manufacture: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   modelYear: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   plateNb: int [1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+Costumer1898802862 -> Policy1898802862[label="policy
+[0..1]"];
+MainScreen1852268635 -> Costumer1898802862[label="customerMap
+[0..*]"];
+Policy1898802862 -> Vehicle1898802862[label="vehicle
+[0..1]"];
+    
+}
+@enduml

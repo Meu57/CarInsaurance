@@ -13,94 +13,330 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.List;
+/**
 
+ This class represents the main screen of the application.
+ It extends JFrame and contains various panels for user input and display.
+ The panels include customization panels for customer and policy information,
+ a search panel for finding customers by name, and settlement panels for displaying
+ policy details and settlement information.
+ */
 public class MainScreen extends JFrame {
     //Font & Color
+    /**
+
+     This is the font and color used for the user interface components.
+     */
     Font myFont = new Font("SanSerif", Font.BOLD,28);
+    /**Color class variable mycolor*/
     Color myColor= Color.GRAY;
 
-    // CustomizePanel 1 Variables
+    // Variables used in CustomizePanel1
+    /**
+     * JTextField for the subscriber's first name.
+     */
     JTextField subFname;
+    /**
+     * JTextField for the subscriber's last name.
+     */
     JTextField subLname;
+
+    /**
+     * JTextField for the subscriber's city.
+     */
     JTextField subCity;
+
+    /**
+     * JTextField for the subscriber's phone number.
+     */
     JTextField subPhone;
 
 
 
-    //CustomizePanel 2 Variables
 
+    //CustomizePanel 2 Variables
+    // Variables used in CustomizePanel2
+    /**
+     * JTextField for the vehicle model.
+     */
     JTextField model;
+
+    /**
+     * JTextField for the vehicle manufacturer.
+     */
     JTextField manufacturer;
+
+    /**
+     * JTextField for the vehicle license plate number.
+     */
     JTextField plateNb;
+
+    /**
+     * JTextField for the vehicle estimated value.
+     */
     JTextField estimated;
+
+    /**
+     * JRadioButton for selecting damage state 1.
+     */
     JRadioButton damageradioButton1;
+
+    /**
+     * JRadioButton for selecting damage state 2.
+     */
     JRadioButton damageradioButton2;
+
+    /**
+     * JRadioButton for selecting damage state 3.
+     */
     JRadioButton damageradioButton3;
+
+    /**
+     * JRadioButton for selecting damage state 4.
+     */
     JRadioButton damageradioButton4;
+
+    /**
+     * ButtonGroup for grouping the damage state JRadioButtons.
+     */
     ButtonGroup G1;
 
 
 
-    // CustomizePanel 3 Variables
+    /**
 
+     The variables used in CustomizePanel3 method for policy coverage risks and their corresponding premium, coverage and ceiling values.
+     The variables include the JCheckBox objects for different types of coverage, and Lists to store the coverage risks and their corresponding premium, coverage and ceiling values.
+     @param obligatoryChkBX A JCheckBox object for obligatory coverage.
+     @param allRiskChkBX A JCheckBox object for all-risk coverage.
+     @param vehicleDamageChkBX A JCheckBox object for vehicle damage coverage.
+     @param driverDamageChkBX A JCheckBox object for driver damage coverage.
+     @param assistanceChkBX A JCheckBox object for assistance coverage.
+     @param coveredRisksList A List object to store the types of coverage selected.
+     @param premiumRisksList A List object to store the premium values of the selected coverage types.
+     @param coverageRisksList A List object to store the coverage values of the selected coverage types.
+     @param ceilingRisksList A List object to store the ceiling values of the selected coverage types.
+     */
+    // CustomizePanel3 method Variables
+
+    /**
+
+     The following variables are used in the CustomizePanel3 method.
+     <p>
+     The JCheckBox for the obligatory risk coverage.
+     */
     JCheckBox obligatoryChkBX;
+    /**
+
+     The JCheckBox for the all-risk coverage.
+     */
     JCheckBox allRiskChkBX;
+    /**
+
+     The JCheckBox for the vehicle damage coverage.
+     */
     JCheckBox vehicleDamageChkBX;
+    /**
+
+     The JCheckBox for the driver damage coverage.
+     */
     JCheckBox driverDamageChkBX;
+    /**
+
+     The JCheckBox for the assistance coverage.
+     */
     JCheckBox assistanceChkBX;
+    /**
+
+     The list of covered risks.
+     */
     List<String> coveredRisksList = new ArrayList<>();
+    /**
+
+     The list of premium risks.
+     */
     List<Float> premiumRisksList = new ArrayList<>();
+    /**
+
+     The list of coverage risks.
+     */
     List<Float> coverageRisksList = new ArrayList<>();
+    /**
+
+     The list of ceiling risks.
+     */
     List<Float> ceilingRisksList = new ArrayList<>();
 
-    //CustomizePanel 4 Variables
+
+    //CustomizePanel4 method Variables
+    /**
+     * JRadioButton for selecting the first year of validity.
+     */
     JRadioButton yearRadio;
+    /**
+     * JRadioButton for selecting the second year of validity.
+     */
     JRadioButton yearRadio2;
+
+    /**
+     * JRadioButton for selecting the third year of validity.
+     */
     JRadioButton yearRadio3;
-    JRadioButton  yearRadio4;
+
+    /**
+     * JRadioButton for selecting the fourth year of validity.
+     */
+    JRadioButton yearRadio4;
+
+    /**
+     * ButtonGroup for grouping the year of validity JRadioButtons.
+     */
     ButtonGroup G2;
+
+    /**
+     * JLabel to display the current date.
+     */
     JLabel todayLBL;
-    int validityYear=0;
+
+    /**
+     * Integer representing the validity year.
+     */
+    int validityYear = 0;
+
+    /**
+     * SimpleDateFormat object to format the date.
+     */
     SimpleDateFormat df;
+
+    /**
+     * Date object representing the current date.
+     */
     Date currentDate;
 
+
     //CustomizePanel 6 Variables
+    /**
+     * JTextArea for displaying the list of risks.
+     */
     JTextArea risksTXT;
+    /**
+     * JTextField for searching customers by name or ID.
+     */
     JTextField searchTXT;
+
+    /**
+     * Map for storing customer data, with keys being customer IDs.
+     */
     Map<Integer, Costumer> customerMap = new TreeMap<>();
 
+
+
     //CustomizePanel 7 Variables
+    /**
+     * JTextArea to display policy information.
+     */
     JTextArea policyTXT;
 
     //CustomizePanel 8 Variables
+    /**
+
+     JTextArea for displaying the customer information.
+     */
     JTextArea customerTXT;
 
     //CustomizePanel 9 Variable
+    /**
 
+     JLabel for displaying the claim process step 1.
+     */
     JLabel claimingTXT1;
+    /**
+
+     JLabel for displaying the claim process step 2.
+     */
     JLabel claimingTXT2;
+    /**
+
+     JTextField for the customer ID in the claim process.
+     */
     JTextField claimingCoustumerField;
 
-    //CustomizePanel 10
-     JLabel claimingCostumerNameLBL;
-     JLabel claimingCostumerValidateDateLBL;
-     JLabel claimStatusLBL2;
+
+    // CustomizePanel10 method variables
+
+    /**
+     * JLabel for the claiming customer name.
+     */
+    JLabel claimingCostumerNameLBL;
+
+    /**
+     * JLabel for the claiming customer validate date.
+     */
+    JLabel claimingCostumerValidateDateLBL;
+
+    /**
+     * JLabel for the claim status.
+     */
+    JLabel claimStatusLBL2;
+
+    /**
+     * JTextArea for the risks covered by the claiming customer.
+     */
     JTextArea claimingCostumerRisksCoveredAREA;
 
+    /**
+     * boolean variable for condition 1.
+     */
     boolean cond1;
+
+    /**
+     * boolean variable for condition 2.
+     */
     boolean cond2;
+
+    /**
+     * boolean variable for condition 3.
+     */
     boolean cond3;
 
-    //CustomizePanel 11
+
+    // CustomizePanel11 method Variables
+
+    /**
+     * JTextArea to display the settlement information.
+     */
     JTextArea settelmentArea;
-    double totalPremium =0;
-    double totalCoverage =0;
-    double totalCeiling =0;
-    //CustomizePanel 12
+
+    /**
+     * Total premium of all policies.
+     */
+    double totalPremium = 0;
+
+    /**
+     * Total coverage of all policies.
+     */
+    double totalCoverage = 0;
+
+    /**
+     * Total ceiling of all policies.
+     */
+    double totalCeiling = 0;
+
+
+    // CustomizePanel12 method variables
+    /**
+
+     JTextArea for displaying settlement details.
+     */
     JTextArea settelmentArea2;
 
     /***************METHODS************************/
     //Geting Costumer Data
+    /**
+     * This method creates a Costumer object by extracting the data entered by the user in the customer registration form.
+     * @return The Costumer object containing the customer data.
+     * @throws ParseException If an error occurs while parsing the customer data.
+     */
     public Costumer GetCustomerData() throws ParseException{
         Costumer costumer = new Costumer(
                 subFname.getText(),
@@ -112,6 +348,11 @@ public class MainScreen extends JFrame {
         return costumer;
     }
     //Get Vehicle data
+    /**
+     * Returns the Vehicle object with data entered by the user in the GUI.
+     * @return a Vehicle object containing the data entered by the user
+     * @throws ParseException if the estimated value cannot be parsed as an integer
+     */
     public Vehicle GetVehicleData() throws ParseException{
         Vehicle vehicle= new Vehicle(
          Integer.parseInt(plateNb.getText()),
@@ -123,6 +364,12 @@ public class MainScreen extends JFrame {
     }
 
     //Get Damage Data
+    /**
+     * GetDamageState() method Returns the selected damage state.
+     *
+     * @return an integer representing the selected damage state. Returns 1, 2, 3, or 4 for the
+     *         corresponding radio button selections, or 0 if no button is selected.
+     */
     public int GetDamageState(){
         if(damageradioButton1.isSelected()){
             return 1;
@@ -139,7 +386,14 @@ public class MainScreen extends JFrame {
 
     }
     //Get Policy data
-   private Policy GetPolicyData() throws ParseException{
+    /**
+     * GetPolicyData() method Gets the policy data from the CustomizePanel.
+     *
+     * @return a Policy object containing the policy data.
+     * @throws ParseException if there is an error parsing the date.
+     */
+
+    private Policy GetPolicyData() throws ParseException{
         currentDate = new Date();
        LocalDate now = LocalDate.now();
        Policy policy= new Policy(
@@ -155,6 +409,10 @@ public class MainScreen extends JFrame {
     }
 
     //Resetting Fields to Empty
+    /**
+
+     Clears all input fields and selections, and resets all checkboxes,textfields,Radiobuttons and flags to their default values.
+     */
 
     private void NewCustomer(){
         coverageRisksList.clear();
@@ -196,6 +454,14 @@ public class MainScreen extends JFrame {
     }
 
     // Get Risks Covered By Plan Function
+    /**
+
+     Retrieves the risks covered by the selected plan and adds their details to the corresponding arrays.
+     This method sets up listeners for all the checkboxes on Panel3 and adds the details of the selected risks to their respective arrays.
+     Once all the relevant risks have been added to their respective arrays, the method calls the corresponding methods in the AllRisk, ObligatoryRisk, VehicleRisk, DriverRisk, and AssistanceRisk classes to retrieve the premium, coverage, and ceiling details of each risk.
+     These details are then added to their respective lists for future reference.
+     This method is called from the CustomizePanel3 method to set up the listener for the checkboxes on the panel.
+     */
     private void GetRisksCoveredByPlan() {
         AllRisk allRisk = new AllRisk();
         ObligatoryRisk obligatoryRisk= new ObligatoryRisk();
@@ -267,7 +533,17 @@ public class MainScreen extends JFrame {
 
     }
 
+
+
     //Save Data to Disk
+    /**
+
+     SaveCustomerMapToDisk() method Saves the customer map to disk. If the file does not exist, it creates a new file and adds the customer to the map.
+     If the file exists, it reads the map from the file, adds the customer to the map, and updates the file with the new map.
+     @throws IOException if there is an error with the input/output stream
+     @throws ClassNotFoundException if the class of the serialized object cannot be found
+     @throws ParseException if there is an error with parsing the customer data
+     */
     public void SaveCustomerMapToDisk() throws IOException, ClassNotFoundException, ParseException {
         File file = new File("D:/myfile.dat");
         int platenumber = Integer.parseInt(plateNb.getText());
@@ -308,10 +584,24 @@ public class MainScreen extends JFrame {
 
 
         }
+    /**
+
+     SaveCustomerMapTools() method Saves the customer data to a database.
+     @throws ParseException if there is an error with parsing the customer data
+     */
 public void SaveCustomerMapTools() throws ParseException {
         Costumer costumer=GetCustomerData();
         costumer.addToDB();
 }
+
+    /**
+
+     SaveCustomerMapToNewFile() method Saves the customer data to a new file.
+     @param platenumber the car's plate number
+     @param file the file to save the data to
+     @throws ParseException if there is an error with parsing the customer data
+     @throws IOException if there is an error with the input/output stream
+     */
     private void SaveCustomerMapToNewFile(int platenumber, File file) throws ParseException, IOException {
         TreeMap<Integer,Costumer> newMaptoSave = new TreeMap<>();
 
@@ -328,6 +618,10 @@ public void SaveCustomerMapTools() throws ParseException {
 
     //Search Customer By Mobile Number
 
+    /**
+
+     SearchCustomerByMobileNumber() method Searches for a customer using their mobile number and displays their information.
+     */
     private void  SearchCustomerByMobileNumber(){
         File file = new File("D:/myfile.dat");
         try {
@@ -350,6 +644,21 @@ public void SaveCustomerMapTools() throws ParseException {
         }
 
     }
+    /**
+
+     ClaimsSearchCustomerByMobileNumber() method reads data from file, extracts the costumer data whose mobile number is
+     entered by the user in the claimingCoustumerField, and returns the costumer object.
+     The method reads data from a file located at "D:/myfile.dat" and extracts costumer data from a TreeMap using the
+     mobile number entered by the user in the claimingCoustumerField. If the mobile number is not found, the method returns null.
+     @param `None` No parameters are passed to this method.
+     @return Costumer object. Returns the costumer object found from the file or null if not found.
+     @exception RuntimeException If an error occurs while reading the file, this method throws a RuntimeException.
+     @see `None` This method does not reference any other classes or methods.
+     */
+
+
+
+
 
     private Costumer ClaimsSearchCustomerByMobileNumber(){
         Costumer costumer;
@@ -373,6 +682,20 @@ public void SaveCustomerMapTools() throws ParseException {
     }
 
     //Checking Validity Of Policy
+    /**
+
+     Check the validity of the policy.
+
+     This method checks if the current date is before the validity date of the policy.
+
+     @param validityOfPolicy the date of validity of the policy to be checked
+
+     @return boolean value, true if the policy is valid and false if it is not
+
+     @exception `none` This method does not throw any exceptions
+
+     @see `none` This method does not reference any other classes or methods
+     */
     private boolean CheckPolicyValidity(LocalDate validityOfPolicy){
 
         LocalDate now = LocalDate.now();
@@ -384,6 +707,15 @@ public void SaveCustomerMapTools() throws ParseException {
             return false;
         }
         }
+
+    /**
+     * This method checks whether the conditions for registering a claim are valid or not.
+     * The conditions are stored in instance variables cond1, cond2, and cond3.
+     * If all three conditions are true, the method sets the text of claimStatusLBL2 to "Claiming Status: You can register your claim" and returns true.
+     * Otherwise, the method sets the text of claimStatusLBL2 to "Claiming Status: You can't register the claim" and returns false.
+     *
+     * @return true if all three conditions are true, false otherwise.
+     */
         private boolean ClaimsIsValid(){
            if(cond1==true && cond2 ==true && cond3==true){
                 claimStatusLBL2.setText("Claiming Status: You can register your claim");
@@ -393,7 +725,19 @@ public void SaveCustomerMapTools() throws ParseException {
             return false;
         }
         }
-    //Display payments 
+    //Display payments
+    /**
+
+     Calculates and displays the total payments of the policy based on the estimated value and risk factors.
+     It iterates over three different lists of premium, coverage, and ceiling risks,
+     and multiplies the total sum of each with the estimated value to calculate the final payments.
+     Then, it sets the text of the JTextArea "settlementArea" to display the total premium, risk coverage,
+     and maximum ceiling in the specified format.
+     @param `none` No parameters are passed to this method.
+     @return This method does not return anything.
+     @exception `none` This method does not throw any exceptions.
+     @see `none` This method does not reference any other classes or methods.
+     */
     private void DisplayPaymentsOfPolicy(){
         for (int i = 0; i < premiumRisksList.size(); i++) {
             totalPremium+=premiumRisksList.get(i);
@@ -410,7 +754,13 @@ public void SaveCustomerMapTools() throws ParseException {
 
 
 
-    /**** Customization Methods *****/
+    /***Customization Methods *****/
+    /**
+
+     This method creates a customized JPanel for customer information.
+
+     The JPanel includes four JLabels and four JTextFields for the customer's first name, last name, city, and phone number.
+     */
     private void CustomizePanel1(){
         JPanel p1= new JPanel();
         TitledBorder titledBorder = BorderFactory.createTitledBorder
@@ -446,7 +796,14 @@ public void SaveCustomerMapTools() throws ParseException {
         setLayout(null);
         add(p1);
     }
+    /**
 
+     This method creates and customizes JPanel p2 for displaying car details.
+     It sets the title border with the specified font and color, and adds various
+     components such as JLabels, JTextFields, and JRadioButtons to the panel.
+     The components are added in a GridLayout with 14 rows and 1 column.
+     Finally, it adds the customized JPanel to the frame.
+     */
     private void CustomizePanel2(){
         JPanel p2= new JPanel();
 
@@ -531,6 +888,13 @@ public void SaveCustomerMapTools() throws ParseException {
 
         add(p2);
     }
+    /**
+
+     This method customizes Panel3 by adding the necessary components to it.
+     The method adds a titled border to the panel and sets its bounds.
+     It then creates and adds the necessary checkboxes to the panel.
+     Finally, the method calls the GetRisksCoveredByPlan method to set up listeners for the checkboxes.
+     */
 
     private void CustomizePanel3(){
         JPanel p3 = new JPanel();
@@ -562,7 +926,17 @@ public void SaveCustomerMapTools() throws ParseException {
         p3.add(assistanceChkBX);
         add(p3);
     }
+    /**
 
+     This method customizes the validity period panel.
+     It creates a titled border with the label "Validity Period" and adds it to a JPanel object.
+     This JPanel object has a size of 300x250 pixels and a GridLayout of 6 rows and 1 column.
+     The method then creates four JRadioButton objects and adds them to a ButtonGroup object.
+     The JRadioButton objects are labeled "1 Year", "2 Years", "3 Years", and "4 Years", respectively.
+     The method then adds ActionListeners to each JRadioButton object which sets the validityYear variable to the corresponding number of years.
+     The method then creates a JLabel object that displays the current date and adds it to the JPanel object.
+     Finally, the method adds all the created components to the JPanel object and adds the JPanel object to the JFrame object.
+     */
     private void CustomizePanel4() {
         TitledBorder titledBorder = BorderFactory.createTitledBorder
                 (BorderFactory.createLineBorder(Color.GRAY,1),
@@ -644,6 +1018,17 @@ public void SaveCustomerMapTools() throws ParseException {
         //adding panel4 to jframe
         add(p4);
     }
+
+    /**
+     * CustomizePanel5 method creates and customizes JPanel p5 and its components, which include
+     * four JButtons, a JTextField, and several JLabels. The method sets a titled border around
+     * the panel, and positions the panel on the main frame using bounds. The method adds several
+     * action listeners to the buttons, including a for loop to iterate through the coveredRisksList
+     * ArrayList and display each element on a new line in the risksTXT JTextArea component. The
+     * method also calls several other methods, including GetPolicyData(), DisplayPaymentsOfPolicy(),
+     * SaveCustomerMapToDisk(), SaveCustomerMapTools(), SearchCustomerByMobileNumber(), and
+     * NewCustomer(), as appropriate for the buttons pressed. The method does not return a value.
+     */
 
     private void CustomizePanel5(){
     TitledBorder titledBorder = BorderFactory.createTitledBorder
@@ -737,7 +1122,11 @@ public void SaveCustomerMapTools() throws ParseException {
 
 
 }
+    /**
 
+     This method customizes panel 6 by creating a titled border, setting its size and adding a JTextArea to display covered risks.
+     The JTextArea is set to be not editable and transparent. The method also sets the font of the JTextArea.
+     */
     private void CustomizePanel6(){
         TitledBorder titledBorder = BorderFactory.createTitledBorder
                 (BorderFactory.createLineBorder(Color.GRAY,1),
@@ -761,6 +1150,14 @@ public void SaveCustomerMapTools() throws ParseException {
         add(p6);
 
     }
+    /**
+
+     Customizes panel 7 to display policy details.
+     The panel contains a titled border with a centered title "Policy Details" and a gray line border with width 1.
+     It is positioned at (x=635, y=250) on the main frame with width=300 and height=250.
+     The panel contains a JTextArea that displays the policy details, which is not editable, not opaque, and has line wrap enabled.
+     The JTextArea has a font size of the original font size plus 3.0f.
+     */
 
     private void CustomizePanel7(){
         TitledBorder titledBorder = BorderFactory.createTitledBorder
@@ -769,7 +1166,7 @@ public void SaveCustomerMapTools() throws ParseException {
                         TitledBorder.DEFAULT_POSITION,myFont,myColor);
 
         JPanel p7= new JPanel();
-        p7.setBounds(635,250,300,250);//width 625+10
+        p7.setBounds(635,250,300,250);
         p7.setBorder(titledBorder);
         p7.setLayout(new GridLayout(6,1));
         policyTXT= new JTextArea(20,1);
@@ -788,6 +1185,19 @@ public void SaveCustomerMapTools() throws ParseException {
         add(p7);
 
     }
+
+    /**
+
+    Customizes Panel 8 to display Customer Details.
+
+    This method sets up a panel with a titled border to display information about the customer. It creates a JTextArea
+
+for the customer information, sets it to be non-editable and wrap its lines. The font size is increased by 3.0f.
+
+    The JTextArea is added to the panel and the panel p8 is added to the main frame.
+
+            @return void
+*/
     private void Customizepanel8(){
         TitledBorder titledBorder = BorderFactory.createTitledBorder
                 (BorderFactory.createLineBorder(Color.GRAY,1),
@@ -811,6 +1221,32 @@ public void SaveCustomerMapTools() throws ParseException {
         add(p8);
 
     }
+
+    /**
+     *  Customizepanel9() Creates and customizes JPanel "p9" for handling customer claims.
+     *
+     * The panel has a titled border with specified font, color and title.
+     *
+     * It contains labels, text fields, a list, and buttons to allow a user to search for a customer
+     * and confirm the customer's claim.
+     *
+     * When a user clicks on the "Search Customer" button, this method will execute
+     * the ClaimsSearchCustomerByMobileNumber() method to retrieve the customer information
+     * from the database and display the information in the relevant text fields.
+     *
+     * When a user clicks on the "Confirm Claim" button, this method will execute the
+     * ClaimsIsValid() method to validate the customer's claim and display settlement information
+     * based on the selected claim(s) in the "settlementArea2" text area.
+     *
+     * @return This method does not return anything.
+     *
+     *  @param 'none' No parameters are passed to this method.
+     *
+     * @exception Exception On input error.
+     *
+     * @see Exception
+     */
+
     private void Customizepanel9(){
         TitledBorder titledBorder = BorderFactory.createTitledBorder
                 (BorderFactory.createLineBorder(Color.GRAY,1),
@@ -942,6 +1378,25 @@ public void SaveCustomerMapTools() throws ParseException {
         p9.add(confirmClaimBTN);
         add(p9);
     }
+
+    /**
+
+     Customizepanel10() Creates and customizes JPanel "p10" for displaying the claim status of a customer.
+
+     The panel has a titled border with specified font, color, and title. It contains labels,
+
+     a text area, and a scroll pane to display the customer's name, date of policy validity,
+
+     risks covered, and claiming status.
+
+
+
+     @return This method does not return anything.
+
+     @exception `none` This method does not throw any exceptions.
+
+     @see `none` This method does not reference any other classes or methods.
+     */
     private void  Customizepanel10(){
         TitledBorder titledBorder = BorderFactory.createTitledBorder
                 (BorderFactory.createLineBorder(Color.GRAY,1),
@@ -994,6 +1449,16 @@ public void SaveCustomerMapTools() throws ParseException {
         add(p11);
 
     }
+    /**
+     * Creates and customizes JPanel "p11" for displaying settlement information.
+     *
+     * The panel has a titled border with specified font, color, and title.
+     * It contains a JTextArea for displaying the settlement information.
+     *@param `none` No parameters are passed to this method.
+     * @return This method does not return anything.
+     * @exception `none` This method does not throw any exceptions.
+     * @see JTextArea
+     */
 
     private void  Customizepanel12(){
         TitledBorder titledBorder = BorderFactory.createTitledBorder
@@ -1023,7 +1488,20 @@ public void SaveCustomerMapTools() throws ParseException {
 
 
     //Constructor
-    public MainScreen(){
+/**
+
+ Constructor for the MainScreen class.
+ Initializes the GUI by calling methods to customize and create various JPanels.
+ The created panels include search panels for customers and policies, a panel for displaying customer information,
+ a panel for displaying policy information, a panel for handling claims, a panel for handling settlements,
+ and a panel for displaying the claim status of a customer.
+
+
+
+
+*/
+
+ public MainScreen(){
         CustomizePanel1();
         CustomizePanel2();
         CustomizePanel3();
@@ -1041,7 +1519,15 @@ public void SaveCustomerMapTools() throws ParseException {
 
 
 
+    /**
 
+     The main method of the Car Insurance System.
+     This method creates an instance of the MainScreen class, sets the visibility of the
+     screen to true, sets the close operation, title, and bounds of the screen.
+     @param args Command-line arguments passed to this method. They are not used in this implementation.
+
+     @see MainScreen
+     */
     //Main function
     public static void main(String[] args) {
         MainScreen mainScreen = new MainScreen();
